@@ -72,12 +72,23 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
+      if month =='None':
+        pop_month= df['month'].mode()[0]
+        months= ['January','February','March','April','May','June']
+        pop_month= months[pop_month-1]
+        print("The most Popular month is",pop_month)
 
 
     # display the most common day of week
+    if day =='None':
+        pop_day= df['day_of_week'].mode()[0]
+        print("The most Popular day is",pop_day)
 
 
     # display the most common start hour
+    df['Start Hour'] = df['Start Time'].dt.hour
+    pop_hour=df['Start Hour'].mode()[0]
+    print("The popular Start Hour is {}:00 hrs".format(pop_hour))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
